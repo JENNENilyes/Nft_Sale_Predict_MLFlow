@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Prediciting If An NFT Will Sell Or Not</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="static/css/grid.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<header>
+  <nav>
+      <div class="row">
+          <h1 ><a class="navbar-brand">Prediciting If An NFT Will Sell Or Not</a></h1>
+
+      </div>
+    <div class="row">
+        <ul class="main-nav js--main-nav">
+            <li><img src="{{url_for('static', filename='1.png')}}" width="75" height="40" /></li>
+            <li><img src="{{url_for('static', filename='2.png')}}" width="75" height="40" /></li>
+            <li><img src="{{url_for('static', filename='5.png')}}" width="75" height="40" /></li>
+            <li><img src="{{url_for('static', filename='1.png')}}" width="75" height="40" /></li>
+            <li><img src="{{url_for('static', filename='2.png')}}" width="75" height="40" /></li>
+<!--            <li><img src="{{url_for('static', filename='5.png')}}" width="50" height="25" /></li>-->
+            <li><img src="{{url_for('static', filename='5.png')}}" width="75" height="40" /></li>
+<!--            <li><img src="{{url_for('static', filename='2.png')}}" width="50" height="25" /></li>-->
+            <li><img src="{{url_for('static', filename='1.png')}}" width="75" height="40" /></li>
+
+
+        </ul>
+    </div>
+</nav>
+</header>
+
+
+ <div class="login">
+	<p>Enter below details to get result</p>
+    <form action="{{ url_for('predict')}}"method="post" >
+<!--        <input type="text" name="created_date" placeholder="created_date" required="required" />-->
+        <input type="text" name="name" placeholder="name" required="required" />
+        <input type="text" name="schema_name" placeholder="schema_name" required="required" />
+        <input type="text" name="asset_contract_type" placeholder="asset_contract_type" required="required" />
+        <input type="text" name="created_date" placeholder="created_date" required="required" />
+        <input type="text" name="slug" placeholder="slug" required="required" />
+        <input type="text" name="safelist_request_status" placeholder="safelist_request_status" required="required" />
+        <input type="text" name="address" placeholder="address" required="required" />
+        <input type="text" name="is_presale" placeholder="is_presale Level" required="required" />
+<!--        <input type="text" name="total_supply" placeholder="BloodPressure" required="required" />-->
+        <input type="text" name="seller_fee_basis_points" placeholder="assetseller_fee_basis_points" required="required" />
+        <input type="text" name="set_contract_dev_seller_fee_basis_points" placeholder="set_contract_dev_seller_fee_basis_points" required="required" />
+<!--        <input type="text" name="opensea_seller_fee_basis_points" placeholder="BMI" required="required" />-->
+<!--        <input type="text" name="featured" placeholder="Age" required="required" />-->
+        <input type="text" name="collection_dev_seller_fee_basis_points" placeholder="collection_dev_seller_fee_basis_points" required="required" />
+<!--        <input type="text" name="opensea_seller_fee_basis_points" placeholder="Age" required="required" />-->
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+<!--   <br>-->
+<!--   <br>-->
+<!--   {{ prediction_text }}-->
+<!--     <br>-->
+
+
+
+
+  </div>
+   <div class="Prediction-mass">
+       <br><br><br><br><br><br><br>
+
+       {{ prediction_text }}
+    <br>
+
+  </div>
+
+<div class="Prediction-mass1">
+    <table>
+      <tr>
+        <th>features</th>
+        <th>description</th>
+      </tr>
+      <tr>
+        <td>asset contract name </td>
+        <td>la marketplace sur laquelle vendre votre NFT ex : Opensea(le plus utilisé)</td>
+      </tr>
+      <tr>
+        <td>asset contract schema_name </td>
+        <td>NFT est défini par les normes d'interface ex ERC721 et ERC1155</td>
+      </tr>
+      <tr>
+        <td>contract .type </td>
+        <td>c’est le type des transaction (fongible/non fongible)</td>
+      </tr>
+      <tr>
+        <td>Collection.created_date </td>
+        <td>le date de création d’une collection
+    plus le NFT est ancien, plus il est susceptible de se vendre
+    </td>
+      </tr>
+      <tr>
+        <td>collection_slug  </td>
+        <td>des items du monde réel, dodgers,hero,rarible,pizza..</td>
+      </tr>
+      <tr>
+        <td>safelist_request_status </td>
+        <td>not_requested (toutes nouvelles collections)/requested (collections qui ont demandé à être inscrites sur notre site)/ approved (collections qui sont autorisées sur notre site et peuvent être trouvées dans les résultats de recherche) / verified (collections vérifiées)</td>
+      </tr>
+      <tr>
+        <td>owner.addres </td>
+        <td>une adresse Ethereum pour télécharger un portefeuille numérique vous permettant d’envoyer et de recevoir des cryptomonnaies</td>
+      </tr>
+      <tr>
+        <td>Is_presale </td>
+        <td>Vente du produit NRF avant sa disponibilité sur le marché</td>
+      </tr>
+      <tr>
+        <td>Collection.dev_seller_fee_basis_points </td>
+        <td>Lorsque des ventes sont réalisées, le vendeur gagne des frais de collection</td>
+      </tr>
+    </table>
+    <br>
+    <p> <img src="{{url_for('static', filename='mlc.png')}}" width="1000" height="800" class="center"/></p>
+</div>
+
+
+</body>
+</html>
